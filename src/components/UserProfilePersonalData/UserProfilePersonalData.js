@@ -23,15 +23,17 @@ import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import { blue } from '@mui/material/colors';
 
 import "react-datepicker/dist/react-datepicker.css";
+import "./styles.css";
+
+import CustomField from './CustomField';
 
 function UserProfilePersonalData(props){
-
 
   //Data
   const initialValues = {
     cedula: props.user.cedula,
-    firstName: props.user.name,
-    lastName: props.user.name,
+    firstName: props.user.firstName,
+    lastName: props.user.lastName,
     birthday: props.user.birthday,
     gender: props.user.gender,
     email: props.user.email,
@@ -62,21 +64,24 @@ function UserProfilePersonalData(props){
                   <Form>
                     <CardContent>
                       <Grid container item spacing={1} xs={12}>
-                        <Grid container item spacing={2} xs={12}>
+                        <Grid container item spacing={3} xs={12}>
                             <Grid item xs={4}>
                               <Typography color="text.primary" sx={{ fontSize: 12, justifyContent: "left", fontWeight: 'bold'}}>
                                 Cédula
                               </Typography>
-                              <FormControl fullWidth variant="outlined">
+                              <FormControl fullWidth>
                                 <Select
-                                  variant="filled" 
-                                  labelId="demo-simple-select-outlined-label"
-                                  id="demo-simple-select-outlined"
                                   onChange={handleChange}
                                   onBlur={handleBlur}
                                   value={values.cedula}
                                   name="cedula"
-                                  size="small" >
+                                  size='small'
+                                  sx={{ fontSize: 'absolute',
+                                        borderRadius: 1.25,
+                                        backgroundColor: '#f0f0f0',
+                                        border: '2 solid #f0f0f0', 
+                                      }}
+                                  >
                                   <MenuItem value={values.cedula}>{values.cedula}</MenuItem>
                                 </Select>                                 
                               </FormControl>
@@ -85,71 +90,41 @@ function UserProfilePersonalData(props){
                               <Typography color="text.primary" sx={{ fontSize: 12, justifyContent: "left", fontWeight: 'bold'}}>
                                 Nombres
                               </Typography>
-                              <Field
-                                variant="filled"
-                                fullWidth
-                                name="name"
-                                value={values.firstName}
-                                component={TextField}
-                                size="small"
-                              />
+                              <CustomField name={"firstName"} value={values.firstName}/>
                             </Grid>
                             <Grid item xs={4}>
                               <Typography color="text.primary" sx={{ fontSize: 12, justifyContent: "left", fontWeight: 'bold'}}>
                                 Apellidos
                               </Typography>
-                              <Field
-                                variant="filled"
-                                fullWidth
-                                name="lastname"
-                                value={values.lastName}
-                                component={TextField}
-                                size="small"
-                              />
+                              <CustomField name={"lastName"} value={values.lastName}/>
                             </Grid>
                         </Grid>
                         <Grid container item spacing={1} xs={12} m={1}></Grid>
-                        <Grid container item spacing={2} xs={12}>
+                        <Grid container item spacing={3} xs={12}>
                             <Grid item xs={4}>
                               <Typography color="text.primary" sx={{ fontSize: 12, justifyContent: "left", fontWeight: 'bold'}}>
                                 Fecha de nacimiento
                               </Typography>
-                              <DatePicker 
-                                variant="filled"
-                                fullWidth
-                                selected={startDate}
-                                name='birthday'
-                                onChange={(date) => {
-                                   setFieldValue('birthday', setStartDate(Date.parse(date)));
+                                <DatePicker
+                                  selected={startDate}
+                                  name='birthday'
+                                  onChange={(date) => {
+                                    setFieldValue('birthday', setStartDate(Date.parse(date)));
                                   }}
-                                  renderInput={(params) => <TextField variant="filled" fullWidth {...params} />}
+                                  renderInput={(params) => <TextField {...params} />}
                                 />
                             </Grid>  
                             <Grid item xs={4}>
                               <Typography color="text.primary" sx={{ fontSize: 12, justifyContent: "left", fontWeight: 'bold'}}>
                                 Género
                               </Typography>
-                              <Field
-                                variant="filled"
-                                fullWidth
-                                name="gender"
-                                size="small" 
-                                value={values.gender}
-                                component={TextField}
-                              />
+                              <CustomField name={"gender"} value={values.gender}/>
                             </Grid>  
                             <Grid item xs={4}>
                               <Typography color="text.primary" sx={{ fontSize: 12, justifyContent: "left", fontWeight: 'bold'}}>
                                   Correo electrónico
                               </Typography>
-                              <Field
-                                variant="filled"
-                                fullWidth
-                                name="email"
-                                value={values.email}
-                                component={TextField}
-                                size="small" 
-                              />
+                              <CustomField name={"email"} value={values.email}/>
                             </Grid>
                         </Grid>
                         <Grid container item  spacing={1} xs={12} m={1}>
@@ -164,61 +139,33 @@ function UserProfilePersonalData(props){
                             </Stack>  
                           </Grid>
                         </Grid>    
-                        <Grid container item  spacing={2} xs={12}>
+                        <Grid container item  spacing={3} xs={12}>
                             <Grid item xs={4}>
                               <Typography color="text.primary" sx={{ fontSize: 12, justifyContent: "left", fontWeight: 'bold'}}>
                                  Provincia *
                               </Typography>
-                              <Field
-                                variant="filled"
-                                fullWidth
-                                name="province"
-                                value={values.province}
-                                component={TextField}
-                                size="small" 
-                              />
+                              <CustomField name={"province"} value={values.province}/>
                             </Grid>
                             <Grid item xs={4}>
                               <Typography color="text.primary" sx={{ fontSize: 12, justifyContent: "left", fontWeight: 'bold'}}>
                                   Sector*
                               </Typography>
-                              <Field
-                                variant="filled"
-                                fullWidth
-                                name="sector"
-                                value={values.sector}
-                                component={TextField}
-                                size="small" 
-                              />
+                              <CustomField name={"sector"} value={values.sector}/>
                             </Grid>
                             <Grid item xs={4}>
                               <Typography color="text.primary" sx={{ fontSize: 12, justifyContent: "left", fontWeight: 'bold'}}>
                                   Dirección*
                               </Typography>
-                              <Field
-                                variant="filled"
-                                fullWidth
-                                name="address"
-                                value={values.address}
-                                component={TextField}
-                                size="small" 
-                              />
+                              <CustomField name={"address"} value={values.address}/>
                             </Grid>
                         </Grid>
-                        <Grid item container spacing={1} xs={12}>
+                        <Grid item container spacing={3} xs={12}>
                           <Grid item xs={4}>
                             <Box>
                               <Typography color="text.primary" sx={{ fontSize: 12, justifyContent: "left", fontWeight: 'bold'}}>
                                 Móvil
                               </Typography>
-                              <Field
-                                variant="filled"
-                                fullWidth
-                                name="movil"
-                                value={values.movil}
-                                component={TextField}
-                                size="small" 
-                              />
+                              <CustomField name={"movil"} value={values.movil}/>
                             </Box>
                           </Grid>
                         </Grid>   
@@ -232,34 +179,18 @@ function UserProfilePersonalData(props){
                               </Typography>
                           </Stack>
                         </Grid>   
-                        <Grid item container spacing={2} xs={12}>
+                        <Grid item container spacing={3} xs={12}>
                             <Grid item xs={4}>
                               <Typography color="text.primary" sx={{ fontSize: 12, justifyContent: "left", fontWeight: 'bold'}}>
                                   Contraseña*
                               </Typography>
-                              <Field
-                                variant="filled"
-                                fullWidth
-                                name="password"
-                                type="password"
-                                value={values.password}
-                                component={TextField}
-                                size="small" 
-                              />
+                              <CustomField name={"password"} type="password" value={values.password}/>
                             </Grid>
                             <Grid item xs={4}>
                               <Typography color="text.primary" sx={{ fontSize: 12, justifyContent: "left", fontWeight: 'bold'}}>
                                   Confirmar contraseña*
                               </Typography>
-                              <Field
-                                variant="filled"
-                                fullWidth
-                                name="confpassword"
-                                type="password"
-                                value={values.password}
-                                component={TextField}
-                                size="small" 
-                              />
+                              <CustomField name={"confpassword"} type="password" value={values.password}/>
                             </Grid>
                         </Grid>
                       </Grid>

@@ -30,7 +30,7 @@ function CustomMenuBar(props){
             endIcon={<KeyboardArrowDownIcon />}
             style={{ border:0, textTransform: "none" }}                    
         >
-        { props.user.name }
+        { props.user.firstName + ' ' + props.user.lastName }
         </Button>
     );
 }

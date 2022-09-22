@@ -16,7 +16,8 @@ import {
 function UserProfileScreen() {
 
   const user = {
-    name: 'Jhone Doe',
+    firstName: 'Jhone',
+    lastName: 'Doe',
     cedula: '001-0000000-1',
     img: {
       route: '',

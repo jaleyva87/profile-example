@@ -7,8 +7,8 @@ function CustomAvatar(props){
     return (
         <Stack direction="row" spacing={2}>
             <Avatar 
-                alt={props.user.name} 
-                src={props.user.img.route} 
+                alt={ props.user.firstName + ' ' + props.user.lastName } 
+                src={ props.user.img.route }
                 sx={{ width: props.user.img.width, height: props.user.img.height}}
                 />
         </Stack>

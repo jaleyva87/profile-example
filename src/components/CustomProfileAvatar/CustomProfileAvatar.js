@@ -26,7 +26,7 @@ function CustomProfileAvatar(props){
                 )  
             }
             <Typography color="text.primary" sx={{ fontSize: 16, textTransform: "uppercase" }}>
-              {props.user.name}
+              { props.user.firstName + ' ' + props.user.lastName}
             </Typography>
             <Typography color="text.primary" sx={{ fontSize: 12, textTransform: "uppercase" }}>
               {props.user.cedula}
